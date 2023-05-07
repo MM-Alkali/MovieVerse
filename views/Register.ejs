@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div class="p-3 form-body mb-2 bg-dark text-white">
+    <h2 class="text-center">Sign Up</h2>
+    <form action="/users/register" method="POST">
+      <div class="form-group">
+        <% if (locals.error) { %>
+          <% if (error==='"fullname" is not allowed to be empty' ) { %>
+            <div style="
+                color: rgba(249, 244, 244, 0.448);
+              font-size: medium;
+              font-weight: normal;
+            ">Fullname is not allowed to be empty
+            </div>
+            <% } %>
+              <% } %>
+                <label for="fullname">Fullname:</label>
+                <input type="text" class="form-control" id="fullname" placeholder="Enter fullname" name="fullname" />
+      </div>
+      <div class="form-group mb-3">
+        <% if (locals.error) { %>
+          <% if (error==='"email" is not allowed to be empty' ) { %>
+            <div style="
+                color: rgba(249, 244, 244, 0.448);
+              font-size: medium;
+              font-weight: normal;
+            ">Email is not allowed to be empty
+            </div>
+            <% } %>
+              <% } %>
+                <% if (locals.error) { %>
+                  <% if (error==='Email already exists' ) { %>
+                    <div style="
+              color: rgba(249, 244, 244, 0.448);
+              font-size: medium;
+              font-weight: normal;
+            ">Email already exists
+                    </div>
+                    <% } %>
+                      <% } %>
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" />
+      </div>
+      <div class="form-group">
+        <% if (locals.error) { %>
+          <% if (error==='"username" is not allowed to be empty' ) { %>
+            <div style="
+                color: rgba(249, 244, 244, 0.448);
+              font-size: medium;
+              font-weight: normal;
+            ">Username is not allowed to be empty
+            </div>
+            <% } %>
+              <% } %>
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" />
+      </div>
+      <div class="form-group">
+        <% if (locals.error) { %>
+          <% if (error==='"password" is not allowed to be empty' ) { %>
+            <div style="
+                color: rgba(249, 244, 244, 0.448);
+              font-size: medium;
+              font-weight: normal;
+            ">Password is not allowed to be empty
+            </div>
+            <% } %>
+              <% } %>
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password"
+                  name="password" />
+                <div id="passwordHelpBlock" class="form-text">
+                  Your password must be 3-8 characters long, contain letters and numbers only.
+                </div>
+      </div>
+      <div class="form-group">
+        <% if (locals.error) { %>
+          <% if (error==='"Confirm password" does not match' ) { %>
+            <div style="
+                color: rgba(249, 244, 244, 0.448);
+              font-size: medium;
+              font-weight: normal;
+            ">Confirm password does not match
+            </div>
+            <% } %>
+              <% } %>
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" class="form-control" id="confirm_password" placeholder="Enter password"
+                  name="confirm_password" />
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn mt-3 btn-primary">Register</button>
+                </div>
+    </form>
+    <p class="button mt-2 text-center">Already have an account? <a href="/login">Login</a></p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+</body>
+</html>

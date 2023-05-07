@@ -1,0 +1,100 @@
+/* general styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e;
+}
+
+body {
+  color: #e0e0e0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  background-color: #1e1e1e;
+}
+
+.container {
+  max-width: auto;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.form-group {
+  max-width: auto;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 90%;
+  color: #e0e0e0;
+}
+
+
+
+.form-text {
+  font-size: 0.875rem;
+}
+
+.form-body {
+  padding: 1rem;
+  background-color: #1e1e1e;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  border-radius: 1px;
+}
+
+.form-body input {
+  background: #363636;
+  border: 1px solid #212121;
+  color: #ccc;
+}
+
+.form-body input:focus,
+.form-body textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* error message styles */
+.form-group > div {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+#passwordHelpBlock {
+  font-size: 13px;
+}
+
+.btn {
+  background-color: #2196f3;
+  border-color: #2196f3;
+}
+
+.btn:hover {
+  background-color: #4caf50;
+  border-color: #0062cc;
+}
+
+.btn:focus,
+.btn.focus {
+  box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.5);
+}
+
+/* responsive styles */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .form-group {
+    width: 80%;
+  }
+  .form-body {
+    width: 90%;
+  }
+}
+
+h2 {
+  color: #ccc;
+}
