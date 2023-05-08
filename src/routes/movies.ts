@@ -6,7 +6,7 @@ import {
 } from "../controller/moviesController";
 
 import { isUser } from "../middleware/authorization";
-import { upload } from "../middleware/movieUpload";
+import { upload } from "../utils/upload";
 
 const router = express.Router();
 

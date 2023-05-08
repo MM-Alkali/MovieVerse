@@ -8,9 +8,8 @@ interface UserDocument extends Document {
   password: string;
   otp: number;
   otp_expiry: Date;
-  reset_password_token?: string;
-  reset_password_expiry?: Date;
   movies: MovieDocument[];
+  status: "pending" | "verified" | "suspended";
 }
 
 const UserSchema = new Schema<UserDocument>({
@@ -39,6 +38,11 @@ const UserSchema = new Schema<UserDocument>({
     required: true,
     minlength: [8, "Password must be at least 8 characters long"],
   },
+  status: {
+    type: String,
+    enum: ["pending", "verified", "suspended"], 
+    default: "pending",
+  },
   otp: {
     type: Number,
     required: true,
@@ -46,12 +50,6 @@ const UserSchema = new Schema<UserDocument>({
   otp_expiry: {
     type: Date,
     required: true,
-  },
-  reset_password_token: {
-    type: String,
-  },
-  reset_password_expiry: {
-    type: Date,
   },
   movies: {
     type: [MovieSchema],

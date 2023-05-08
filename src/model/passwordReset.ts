@@ -5,7 +5,7 @@ export interface ResetAttributes extends Document {
   email: string;
   token: string;
   expires: Date;
-  userId: string;
+  userId: any;
   code: string;
 }
 
@@ -24,7 +24,8 @@ export const PasswordReset = new mongoose.Schema<ResetAttributes>(
       required: true,
     },
     userId: {
-      type: String,
+      type: Schema.Types.ObjectId, 
+      ref: "User",
     },
     code: {
       type: String,

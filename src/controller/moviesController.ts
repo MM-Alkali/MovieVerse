@@ -2,6 +2,10 @@ import express, { NextFunction, Response, Request } from "express";
 import { MovieModel } from "../model/moviesModel";
 import { User } from "../model/userModel";
 import { addMovieSchema, editMovieSchema, variables } from "../utils/utils";
+import slugifyFilename from "../utils/upload";
+import multer from "multer";
+
+const upload = multer({ dest: "public/uploads" });
 
 /*========Create Movie========*/
 
@@ -16,7 +20,23 @@ export const CreateMovie = async (req: Request | any, res: Response) => {
       });
     }
 
-    const image = req.file;
+    if (!req.file) {
+      return res.render("Dashboard", { error: "No file uploaded" });
+    }
+
+    const name = slugifyFilename(req.file.originalname);
+
+    const image = {
+      fieldname: req.file.fieldname,
+      originalname: name,
+      encoding: req.file.encoding,
+      destination: req.file.destination,
+      filename: req.file.filename,
+      mimetype: req.file.mimetype,
+      path: req.file.path,
+      size: req.file.size,
+    };
+
     const movie = await MovieModel.create({
       title,
       description,

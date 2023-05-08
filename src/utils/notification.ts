@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
-export const genOtp = () => {
-    const otp = Math.floor(1234 + Math.random() * 5000);
+export const generateOtp = () => {
+    const otp = Math.floor(4321 + Math.random() * 30000);
     const expiry = new Date();
 
     expiry.setTime(new Date().getTime() + 30 * 60 * 1000);

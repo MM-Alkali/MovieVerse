@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResetPassword } from "../model/passwordReset";
 import nodemailer from "nodemailer";
-import { genOtp, generatePasswordResetCode } from "../utils/notification";
+import { generateOtp, generatePasswordResetCode } from "../utils/notification";
 
 const jwtsecret = process.env.JWT_SECRET!;
 
@@ -29,7 +29,7 @@ export const Register = async (req: Request, res: Response) => {
       return res.render("Register", { error: "Email already exists" });
     }
 
-    const { otp, expiry } = genOtp();
+    const { otp, expiry } = generateOtp();
 
     const newUser = await User.create({
       fullname,
