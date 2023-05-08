@@ -53,7 +53,7 @@ router.get("/dashboard", isUser, async (req: Request | any, res: Response) => {
       .skip((page - 1) * perPage)
       .limit(perPage);
 
-    if (movieList.length === 0) {
+    if (!movieList) {
       return res.render("Dashboard", { message: "No movies found" });
     }
 
