@@ -8,6 +8,8 @@ services:
       - db
     env_file:
       - .env
+    volumes:
+      - ./public/uploads:/app/public/uploads  
   db:
     image: mongo
     volumes:
