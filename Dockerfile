@@ -6,8 +6,10 @@ COPY package*.json yarn.lock ./
 
 RUN yarn
 
-COPY . .
+COPY /public/uploads /app/
 
+COPY . .
+ 
 RUN npx tsc
 
 RUN apk add --no-cache mongodb-tools
