@@ -225,6 +225,12 @@ footer {
   text-decoration: underline;
 }
 
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #0077ff;
+  border: none;
+  cursor: pointer;
+}
+
 .form-group input,
 .form-group textarea {
   border: none;

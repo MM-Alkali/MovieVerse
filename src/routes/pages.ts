@@ -18,7 +18,7 @@ router.get("/login", (req: Request, res: Response, next: NextFunction) => {
 router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const page: number = parseInt(req.query.page as string) || 1;
-    const limit: number = 7;
+    const limit: number = 8;
     const skipIndex: number = (page - 1) * limit;
 
     const movieList = await MovieModel.find()
