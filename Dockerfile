@@ -6,7 +6,9 @@ COPY package*.json yarn.lock ./
 
 RUN yarn
 
-COPY /public/uploads /app/
+COPY /public/uploads /app
+
+RUN chown -R appuser:appgroup /app/public/uploads && chmod -R 777 /app/public/uploads
 
 COPY . .
  
