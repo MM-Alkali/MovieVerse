@@ -16,7 +16,7 @@ RUN npx tsc
 
 RUN apk add --no-cache mongodb-tools
 
-ENV MONGODB_URI=${MONGODB_URI}
+ENV MONGODB_URL=${MONGODB_URL}
 
 ENV JWT_SECRET=${JWT_SECRET}
 
