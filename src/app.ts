@@ -4,10 +4,10 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import db from './config/database.config'; 
-
+import pages from './routes/pages';
 import users from './routes/users';
 import movies from './routes/movies'
-import pages from './routes/pages';
+import password from './routes/password';
 
 const app = express();
 
@@ -25,9 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/users', users);
-app.use('/movies', movies)
 app.use('/', pages);
+app.use('/users', users);
+app.use('/movies', movies);
+app.use('/password', password);
 
 app.use(function(req: Request, res: Response, next: NextFunction) {
   next(createError(404));

@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.post("/reset", genOtp);
 
-router.post("/verify", verifyOtp);
+router.post("/verify/:id", verifyOtp);
 
 router.post("/reset/:token", resetPassword);
+
+export default router;

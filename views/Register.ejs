@@ -52,17 +52,17 @@
       </div>
       <div class="form-group">
         <% if (locals.error) { %>
-          <% if (error==='"username" is not allowed to be empty' ) { %>
+          <% if (error==='"phone" is not allowed to be empty' ) { %>
             <div style="
                 color: rgba(249, 244, 244, 0.448);
               font-size: medium;
               font-weight: normal;
-            ">Username is not allowed to be empty
+            ">Phone number is not allowed to be empty
             </div>
             <% } %>
               <% } %>
-                <label for="username">Username:</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" />
+                <label for="phone">Phone Number:</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter phone number" name="phone" />
       </div>
       <div class="form-group">
         <% if (locals.error) { %>

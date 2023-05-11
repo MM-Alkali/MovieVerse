@@ -3,17 +3,17 @@ import {
   Register,
   Login,
   Logout,
-//   getUserAndMovies,
+  Verify,
 } from "../controllers/userContoller";
 
 const router = express.Router();
 
 router.post("/register", Register);
 
+router.post('/verify/:id', Verify);
+
 router.post("/login", Login);
 
 router.get("/logout", Logout);
-
-// router.get("/allusers", getUserAndMovies);
 
 export default router;

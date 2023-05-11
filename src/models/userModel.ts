@@ -3,11 +3,11 @@ import { MovieDocument, MovieSchema } from "./moviesModel";
 
 export interface UserDocument extends Document {
   fullname: string;
-  phone: number;
+  phone: string;
   email: string;
   password: string;
   otp: any;
-  otp_expiry: any;
+  expiry: any;
   movies: MovieDocument[];
   status: any
 }
@@ -18,7 +18,7 @@ export const UserSchema = new Schema<UserDocument>({
     required: true,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
   },
   email: {
@@ -35,7 +35,6 @@ export const UserSchema = new Schema<UserDocument>({
   password: {
     type: String,
     required: true,
-    minlength: [8, "Password must be at least 8 characters long"],
   },
   status: {
     type: String,
@@ -44,16 +43,18 @@ export const UserSchema = new Schema<UserDocument>({
   },
   otp: {
     type: Number,
-    required: true,
   },
-  otp_expiry: {
+  expiry: {
     type: Date,
-    required: true,
   },
   movies: {
     type: [MovieSchema],
     default: [],
   },
-});
+},
+{
+  timestamps: true,
+}
+);
 
 export const User = mongoose.model<UserDocument>("User", UserSchema);

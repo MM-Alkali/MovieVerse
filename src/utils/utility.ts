@@ -18,15 +18,6 @@ export const registerUserSchema = Joi.object().keys({
     .messages({ "any.only": "{#label} does not match" }),
 });
 
-export const variables = {
-  abortEarly: false,
-  errors: {
-    wrap: {
-      label: "",
-    },
-  },
-};
-
 export const loginUserSchema = Joi.object().keys({
   email: Joi.string().required(),
   password: Joi.string()
@@ -45,3 +36,12 @@ export const editMovieSchema = Joi.object().keys({
   description: Joi.string(),
   price: Joi.number(),
 });
+
+export const variables = {
+  abortEarly: false,
+  errors: {
+    wrap: {
+      label: "",
+    },
+  },
+};

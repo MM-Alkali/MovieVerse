@@ -2,48 +2,34 @@ import mongoose, { Schema, Document } from "mongoose";
 import { UserDocument, UserSchema } from "./userModel";
 
 export interface ResetInfo extends Document {
-  email: string;
-  token: string;
-  token_expiry: Date;
   userId: UserDocument;
-  otp: number;
-  otp_expiry: Date;
+  email: string;
+  token: any;
+  otp: any;
+  expiry: any;
 }
 
-export const PasswordReset = new mongoose.Schema<ResetInfo>(
+const ResetSchema = new mongoose.Schema<ResetInfo>(
   {
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     email: {
       type: String,
       required: true,
     },
     token: {
       type: String,
-      required: true,
-    },
-    token_expiry: {
-      type: Date,
-      required: true,
-    },
-    userId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
     },
     otp: {
       type: Number,
-      required: true,
     },
-    otp_expiry: {
+    expiry: {
       type: Date,
-      required: true,
     },
   },
-  {
-    timestamps: true,
-  }
 );
 
-export const ResetPassword = mongoose.model<ResetInfo>(
-  "PasswordReset",
-  PasswordReset
-);
+export const Password = mongoose.model<ResetInfo>("Password", ResetSchema);

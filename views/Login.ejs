@@ -24,6 +24,17 @@
             </div>
             <% } %> <% } %>
             <% if (locals.error) { %> 
+              <% if (error === 'Your account has not been verified') { %>
+            <div
+              style="
+                color: rgba(249, 244, 244, 0.448);
+                margin-inline-start: auto;
+                font-size: medium;
+                font-weight: normal;
+              ">Your account has not been verified
+            </div>
+            <% } %> <% } %>
+            <% if (locals.error) { %> 
               <% if (error === 'email is not allowed to be empty') { %>
             <div
               style="
