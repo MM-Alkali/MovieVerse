@@ -1,24 +1,24 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { MovieDocument, MovieSchema } from "./moviesModel";
 
-interface UserDocument extends Document {
+export interface UserDocument extends Document {
   fullname: string;
-  username: string;
+  phone: number;
   email: string;
   password: string;
-  otp: number;
-  otp_expiry: Date;
+  otp: any;
+  otp_expiry: any;
   movies: MovieDocument[];
-  status: "pending" | "verified" | "suspended";
+  status: any
 }
 
-const UserSchema = new Schema<UserDocument>({
+export const UserSchema = new Schema<UserDocument>({
   fullname: {
     type: String,
     required: true,
   },
-  username: {
-    type: String,
+  phone: {
+    type: Number,
     required: true,
   },
   email: {
@@ -27,7 +27,6 @@ const UserSchema = new Schema<UserDocument>({
     unique: true,
     validate: {
       validator: (value: string) => {
-        // Regex for validating email format
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
       },
       message: "Invalid email format",
@@ -40,7 +39,7 @@ const UserSchema = new Schema<UserDocument>({
   },
   status: {
     type: String,
-    enum: ["pending", "verified", "suspended"], 
+    enum: ["pending", "verified", "suspended"],
     default: "pending",
   },
   otp: {

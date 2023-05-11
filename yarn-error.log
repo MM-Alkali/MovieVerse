@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add slugify -D @types/slugify
+  /usr/local/bin/node /usr/local/bin/yarn add --dev @types/nodemailer-sendinblue-transport
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fslugify: Not found
+  Error: https://registry.yarnpkg.com/@types%2fnodemailer-sendinblue-transport: Not found
       at params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66145:18)
       at self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140890:22)
       at Request.emit (node:events:513:28)
@@ -54,8 +54,10 @@ npm manifest:
       "morgan": "~1.9.1",
       "multer": "^1.4.5-lts.1",
       "nodemailer": "^6.9.1",
+      "nodemailer-sendinblue-transport": "^2.0.1",
       "nodemon": "^2.0.21",
       "path": "^0.12.7",
+      "slugify": "^1.6.6",
       "typescript": "^5.0.4",
       "uuid": "^9.0.0"
     },
@@ -3579,6 +3581,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.10.tgz#c311ebae3b6a148c89b1813fd7c4d3c024ef537f"
     integrity sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==
   
+  nodemailer-sendinblue-transport@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/nodemailer-sendinblue-transport/-/nodemailer-sendinblue-transport-2.0.1.tgz#10cf8aa9e3954e435f565ad736fdce59d29f8290"
+    integrity sha512-AtkLImrKkiks8ukP5JKd98U9mkumlg054deLrJ8O2KMVr9tcxcAybrZjNHhc4PfPl36SQkLtxXKOti0jJCHPgg==
+  
   nodemailer@^6.9.1:
     version "6.9.1"
     resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.1.tgz#8249d928a43ed85fec17b13d2870c8f758a126ed"
@@ -4030,6 +4037,11 @@ Lockfile:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
     integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
+  
+  slugify@^1.6.6:
+    version "1.6.6"
+    resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.6.6.tgz#2d4ac0eacb47add6af9e04d3be79319cbcc7924b"
+    integrity sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==
   
   smart-buffer@^4.2.0:
     version "4.2.0"

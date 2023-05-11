@@ -1,8 +1,8 @@
 import express, { NextFunction, Response, Request } from "express";
-import { MovieModel } from "../model/moviesModel";
-import { User } from "../model/userModel";
-import { addMovieSchema, editMovieSchema, variables } from "../utils/utils";
-import slugifyFilename from "../utils/upload";
+import { MovieModel } from "../models/moviesModel";
+import { User } from "../models/userModel";
+import { addMovieSchema, editMovieSchema, variables } from "../utils/utility";
+import slugifyFilename from "../utils/uploads";
 import multer from "multer";
 
 const upload = multer({ dest: "public/uploads" });

@@ -4,7 +4,7 @@ import {
   Login,
   Logout,
 //   getUserAndMovies,
-} from "../controller/userContoller";
+} from "../controllers/userContoller";
 
 const router = express.Router();
 

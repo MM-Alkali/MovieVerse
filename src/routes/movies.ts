@@ -3,10 +3,10 @@ import {
   CreateMovie,
   UpdateMovie,
   DeleteMovie
-} from "../controller/moviesController";
+} from "../controllers/moviesController";
 
 import { isUser } from "../middleware/authorization";
-import { upload } from "../utils/upload";
+import { upload } from "../utils/uploads";
 
 const router = express.Router();
 

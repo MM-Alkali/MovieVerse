@@ -1,5 +1,5 @@
 import express, { NextFunction, Response, Request } from "express";
-import { MovieModel } from "../model/moviesModel";
+import { MovieModel } from "../models/moviesModel";
 import { isUser } from "../middleware/authorization";
 
 const router = express.Router();
