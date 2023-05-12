@@ -3,7 +3,7 @@ import { genOtp, verifyOtp, resetPassword } from "../controllers/passwordControl
 
 const router = express.Router();
 
-router.post("/reset", genOtp);
+router.post("/forgot", genOtp);
 
 router.post("/verify/:id", verifyOtp);
 

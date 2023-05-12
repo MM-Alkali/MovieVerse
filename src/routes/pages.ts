@@ -1,6 +1,7 @@
 import express, { NextFunction, Response, Request } from "express";
 import { MovieModel } from "../models/moviesModel";
 import { isUser } from "../middleware/authorization";
+import { Password } from "../models/passwordModel";
 
 const router = express.Router();
 
@@ -8,6 +9,31 @@ const router = express.Router();
 router.get("/register", (req: Request, res: Response, next: NextFunction) => {
   res.render("Register");
 });
+
+router.get(
+  "/forgot-password",
+  (req: Request, res: Response, next: NextFunction) => {
+    res.render("ForgotPassword");
+  }
+);
+
+router.get(
+  "/verify-otp",
+  (req: Request | any, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    const password = Password.findOne({ id });
+    console.log(password);
+
+    res.render("VerifyOtp", { password });
+  }
+);
+
+router.get(
+  "/reset-password",
+  (req: Request, res: Response, next: NextFunction) => {
+    res.render("ResetPassword");
+  }
+);
 
 // Login Page
 router.get("/login", (req: Request, res: Response, next: NextFunction) => {
@@ -39,15 +65,15 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-// User Dashboard 
+// User Dashboard
 router.get("/dashboard", isUser, async (req: Request | any, res: Response) => {
   try {
     const { id } = req.user;
-    const perPage = 8; 
-    const page = parseInt(req.query.page) || 1; 
+    const perPage = 8;
+    const page = parseInt(req.query.page) || 1;
 
     const movieListCount = await MovieModel.countDocuments({ userId: id });
-    const totalPages = Math.ceil(movieListCount / perPage); 
+    const totalPages = Math.ceil(movieListCount / perPage);
 
     const movieList = await MovieModel.find({ userId: id })
       .skip((page - 1) * perPage)
