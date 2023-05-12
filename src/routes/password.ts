@@ -7,6 +7,6 @@ router.post("/reset", genOtp);
 
 router.post("/verify/:id", verifyOtp);
 
-router.post("/reset/:token", resetPassword);
+router.post("/reset/:id", resetPassword);
 
 export default router;

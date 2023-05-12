@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import sendinblue from "nodemailer-sendinblue-transport";
 
 export const generateOtp = () => {
-  const otp = Math.floor(654321 + Math.random() * 123456);
+  const otp = Math.floor(100000 + Math.random() * 900000);
   const expiry = new Date();
 
   expiry.setTime(new Date().getTime() + 30 * 60 * 1000);
