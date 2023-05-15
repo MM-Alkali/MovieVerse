@@ -7,7 +7,11 @@ import {
 } from "../utils/utility";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { generateOtp, generatePasswordResetToken, sendRegOTP } from "../utils/notifications";
+import {
+  generateOtp,
+  generatePasswordResetToken,
+  sendRegOTP,
+} from "../utils/notifications";
 import { Password } from "../models/passwordModel";
 
 const jwtsecret = process.env.JWT_SECRET!;
@@ -46,29 +50,31 @@ export const Register = async (req: Request, res: Response) => {
 
     await sendRegOTP(email, otp);
 
-    return res.render('VerifyOtp');
+    return res.render("VerifyOtp");
   } catch (err) {
     console.log(err);
   }
 };
 
 export const Verify = async (req: Request | any, res: Response) => {
-  try {
-    const id = req.params.id;
-    const { otp } = req.body;
+  const id = req.params.id;
+  const { otp } = req.body;
 
+  try {
     const user = await User.findById(id);
 
     if (!user) {
-      return res.render('Register', { message: "User not found, kindly register" });
+      return res.render("Register", {
+        message: "User not found, kindly register",
+      });
     }
 
     if (user.otp !== otp) {
-      return res.render('VerifyOtp', { message: "Invalid OTP" });
+      return res.render("VerifyOtp", { message: "Invalid OTP" });
     }
 
     if (user.expiry < new Date()) {
-      return res.render('VerifyOtp', { message: "OTP expired" });
+      return res.render("VerifyOtp", { message: "OTP expired" });
     }
 
     user.status = "verified";
