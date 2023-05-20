@@ -1,0 +1,45 @@
+<%- include ("./payment.css") %>
+<%- include ("../paypal/paypal.component") %>
+<%- include ("../input-field/input.component") %>
+<%- include ("../link/link.component") %>
+
+<div class="payment-container">
+  <form action="" method="post" class="payment-form">
+    <label for="payment-method">Preferred payment method:</label>
+    <select id="payment-method" name="payment-method" onchange="handleSelectChange(event)" required>
+      <option value="">Select a payment method</option>
+      <option value="credit-card">Credit Card</option>
+      <option value="debit-card">Debit Card</option>
+      <option value="paypal">PayPal</option>
+      <option value="bank-transfer">Bank Transfer</option>
+    </select>
+    <% if (selectedOption === "credit-card" || selectedOption === "debit-card") { %>
+    <div class="card-details">
+      <label for="">Name on card:</label>
+      <InputField type="text" name="cardName" id="" required value="<%= nameInput %>" onchange="handleNameInput(event)" />
+      <label for="">Card number:</label>
+      <InputField type="number" onchange="handleCardInput(event)" name="cardNumber" id="" value="<%= cardNumberInput %>" />
+      <label for="">CVV/CVC:</label>
+      <InputField type="number" name="cvv" id="" value="<%= cvvInput %>" onchange="handleCvvInput(event)" />
+      <label for="">Amount:</label>
+      <InputField type="number" name="amount" id="" required value="<%= amountInput %>" onchange="handleAmountInput(event)" />
+      <Link type="submit" href="<%= href %>" class="pay-btn" role="button" linkText="Pay" />
+    </div>
+    <% } %>
+
+    <% if (selectedOption === "bank-transfer") { %>
+    <div>
+      <p>Account number: 0047632198</p>
+      <p>Account name: Health Vibes Inc</p>
+      <p>Bank: Sterling Bank</p>
+      <p>Account type: Current</p>
+    </div>
+    <% } %>
+
+    <% if (selectedOption === "paypal") { %>
+    <div class="paypal-btn">
+      <PayPalButton />
+    </div>
+    <% } %>
+  </form>
+</div>
