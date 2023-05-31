@@ -50,7 +50,8 @@ export const Register = async (req: Request, res: Response) => {
 
     await sendRegOTP(email, otp);
 
-    return res.render("VerifyOtp");
+    // return res.render("VerifyOtp");
+    return res.status(200).json({message: "Verify your account"});
   } catch (err) {
     console.log(err);
   }
@@ -101,7 +102,8 @@ export const Verify = async (req: Request | any, res: Response) => {
       maxAge: 30 * 60 * 1000,
     });
 
-    return res.render("Login");
+    // return res.render("Login");
+    return res.status(200).json({message:"User verified, proceed to Login"})
   } catch (err) {
     console.log(err);
   }

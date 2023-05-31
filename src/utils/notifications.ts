@@ -56,7 +56,7 @@ export const sendRegOTP = async (email: string, otp: number) => {
     await transporter.sendMail(mailOptions);
   } catch (error) {
     console.error(error);
-    throw new Error("Error sending password reset OTP");
+    throw new Error("Error sending account verification OTP");
   }
 };
 
